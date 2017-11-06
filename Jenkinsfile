@@ -1,5 +1,5 @@
 pipeline {
-        agent none 
+        agent none
         stages {
                 stage('pull git') { // for display purposes
 			agent { label 'linux-jnlp' }
@@ -8,7 +8,7 @@ pipeline {
      }
                 stage('build with fastlane in container') {
                         agent { docker 'dtr.ci-aldi.com/fastlane:2.63.0-alpine3.6.home'}
-			steps { 
+			steps {
 				echo 'Building...'
 				sh 'fastlane'
 			}
