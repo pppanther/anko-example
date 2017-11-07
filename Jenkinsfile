@@ -6,7 +6,6 @@ pipeline {
             steps {
                 sh 'git pull https://github.com/pppanther/anko-example.git'
             }
-      // Get the App
      }
         stage('Example Build') {
             agent { docker 'dtr.ci-aldi.com/fastlane:2.63.0-alpine3.6.home' }
