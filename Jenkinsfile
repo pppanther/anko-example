@@ -13,12 +13,5 @@ pipeline {
                 sh '/usr/bin/env fastlane android build'
             }
         }
-        stage('Example Test') {
-            agent { docker 'openjdk:8-jre' }
-            steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
-            }
-        }
     }
 }
