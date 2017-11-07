@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('pull git') {
-            //agent { docker 'alpine/git' }
+            agent { docker 'alpine/git' }
             steps {
                 sh 'git pull https://github.com/pppanther/anko-example.git'
             }
