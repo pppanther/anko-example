@@ -8,7 +8,7 @@ pipeline {
             }
      }
         stage('Build&Deploy') {
-            agent { docker 'filiosoft/fastlane:latest' }
+            agent { docker 'dtr.ci-aldi.com/fastlane:2.64.0-default' }
             steps {
                 sh '/usr/bin/env fastlane android deploy'
             }
