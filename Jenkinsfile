@@ -4,7 +4,7 @@ pipeline {
         stage('pull git') {
             agent { docker 'alpine/git' }
             steps {
-                sh 'git branch: 'master', url: 'github.com/pppanther/anko-example.git''
+                sh 'git branch: 'master', url: "https://github.com/pppanther/anko-example.git"'
             }
       // Get the App
      }
