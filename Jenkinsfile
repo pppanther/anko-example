@@ -2,9 +2,9 @@ pipeline {
     agent none
     stages {
         stage('pull git') {
-            agent { docker 'alpine/git' }
+            //agent { docker 'alpine/git' }
             steps {
-                sh 'git branch: 'master', url: "https://github.com/pppanther/anko-example.git"'
+                sh 'git branch: 'master', credentialsId: '2054e2d4-49e5-48eb-a435-1acb4baf6a8d', url: 'https://github.com/pppanther/anko-example.git''
             }
       // Get the App
      }
