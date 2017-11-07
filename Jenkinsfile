@@ -10,7 +10,7 @@ pipeline {
         stage('Example Build') {
             agent { docker 'dtr.ci-aldi.com/fastlane:2.63.0-alpine3.6.home' }
             steps {
-                sh 'fastlane'
+                sh 'fastlane android test'
             }
         }
         stage('Example Test') {
