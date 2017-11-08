@@ -1,0 +1,17 @@
+pipeline {
+    agent none
+    stages {
+        stage('pull from scm') {
+            agent { docker 'alpine/git' }
+            steps {
+                sh 'git pull https://github.com/pppanther/anko-example.git'
+            }
+     }
+        stage('fastlane deploy') {
+            agent { docker 'dtr.ci-aldi.com/fastlane:2.64.0.jdk7' }
+            steps {
+                sh '/usr/bin/env fastlane android deploy'
+            }
+        }
+    }
+}
