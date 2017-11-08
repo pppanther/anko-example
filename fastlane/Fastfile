@@ -23,6 +23,11 @@ platform :android do
       task: "assemble",
       flavor: "testflavor",
       build_type: "Release"
+      properties: {
+    "versionCode" => 100,
+    "versionName" => "1.0.0",
+    # ...
+  }
     )
   end
 
