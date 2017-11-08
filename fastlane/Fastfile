@@ -27,20 +27,20 @@ platform :android do
     "versionCode" => 100,
     "versionName" => "1.0.0",
     # ...
-      supply:
+      #supply:
   }
     )
   end
-desc "Upload to HockeyApp"
-lane :beta_deploy do
-    hockey(
-      api_token: "..."
-      apk: ".."
-      ipa: "path to .apk"
+#desc "Upload to HockeyApp"
+#lane :beta_deploy do
+#    hockey(
+#      api_token: "..."
+#      apk: ".."
+#      ipa: "path to .apk"
 
 
-    )
-end
+#    )
+#end
   #desc "Beta Build to Hockey"
   #lane :beta do
   #  gradle(task: "assembleRelease")
