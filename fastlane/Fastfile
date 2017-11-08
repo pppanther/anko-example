@@ -20,9 +20,9 @@ platform :android do
   desc "Build"
   lane :build do
     gradle(
-      task: "assemble",
+      task: "assembleDebug",
       flavor: "testflavor",
-      build_type: "Release"
+      #build_type: "Release"
       properties: {
     "versionCode" => 100,
     "versionName" => "1.0.0",
