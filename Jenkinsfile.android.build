@@ -7,10 +7,10 @@ pipeline {
                 sh 'git pull https://github.com/pppanther/anko-example.git'
             }
      }
-        stage('fastlane deploy') {
+        stage('fastlane build w gradle') {
             agent { docker 'dtr.ci-aldi.com/fastlane:2.64.0.jdk7' }
             steps {
-                sh '/usr/bin/env fastlane android deploy'
+                sh '/usr/bin/env fastlane android build'
             }
         }
     }
