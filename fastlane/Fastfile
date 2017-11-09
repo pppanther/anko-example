@@ -19,7 +19,8 @@ platform :android do
   lane :beta do
     gradle(
       task: "assemble",
-      build_type: 'beta'
+      build_type: 'Debug',
+      flavor: "Staging"
     )
 
 #    hockey(
