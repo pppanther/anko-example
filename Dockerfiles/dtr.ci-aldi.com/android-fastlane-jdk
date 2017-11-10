@@ -1,0 +1,24 @@
+FROM java:7-jdk
+
+MAINTAINER paul.hoess@accenture.com
+
+RUN apt-get update -y
+
+# Add ruby tools
+RUN apt-get install -y \
+        ruby \
+        ruby-dev
+
+RUN gem install \
+        bundler \
+        rdoc
+
+# Add build tools
+RUN apt-get install -y \
+        make \
+        g++
+
+RUN gem install fastlane:2.64.0
+
+# change workdir
+WORKDIR /opt
