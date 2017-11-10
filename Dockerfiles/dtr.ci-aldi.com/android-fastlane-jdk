@@ -1,24 +1,30 @@
-FROM java:7-jdk
+# and don't create ".bundle" in all our apps
+ENV GEM_HOME /usr/local/bundle
+ENV BUNDLE_PATH="$GEM_HOME" \
+  BUNDLE_BIN="$GEM_HOME/bin" \
+  BUNDLE_SILENCE_ROOT_WARNING=1 \
+  BUNDLE_APP_CONFIG="$GEM_HOME"
+RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
+  && chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
 
-MAINTAINER paul.hoess@accenture.com
+# Path
+ENV PATH $PATH:$BUNDLE_BIN:${ANDROID_HOME}/tools:$ANDROID_HOME/platform-tools:${GRADLE_HOME}/bin
 
-RUN apt-get update -y
 
-# Add ruby tools
-RUN apt-get install -y \
-        ruby \
-        ruby-dev
+################################################################################################
+###
+### Install Fastlane and plugins
+###
 
-RUN gem install \
-        bundler \
-        rdoc
+RUN gem install fastlane -NV \
+  && gem install fastlane-plugin-appicon fastlane-plugin-android_change_string_app_name fastlane-plugin-humanable_build_number \
+  && gem update --system "$RUBYGEMS_VERSION"
 
-# Add build tools
-RUN apt-get install -y \
-        make \
-        g++
+# Remove Build Deps
+RUN apt-get purge -y --auto-remove $buildDeps
 
-RUN gem install fastlane:2.64.0
+# Output versions
+RUN node -v && npm -v && ruby -v && bundler -v
 
 # change workdir
-WORKDIR /opt
+WORKDIR /opt/android
